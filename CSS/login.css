@@ -53,7 +53,7 @@ body{
 .formulario{
     width: 80%;
     height: 50%;
-    transform: translateY(30%);
+    transform: translateY(20%);
 }
 .formulario input{
     margin-left: 20%;
@@ -76,18 +76,23 @@ H1{
     font-weight: bolder;
 }
 .formulario button{
+    display: block;
+    margin-left: 25%;
+    margin-top: 10%;
     font-family: "Roboto";
     font-weight: bolder;
-    width: 20%;
+    font-size: large;
+    width: 70%;
+    height: 7vh;
     border: none;
     border-radius: 3px;
-    margin-left: 60%;
-    background-color: #0192E3;
+    background-color: #341964;
     color: white;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 
 }
 .esqueceu{
+    display: block;
     text-align: end;
     color: red;
     text-decoration: none;
@@ -95,7 +100,7 @@ H1{
 
 .formulario button:hover{
     cursor: pointer;
-    background-color: #106ABC;
+    background-color: #230E49;
     box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
