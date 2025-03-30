@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <title>Thymeleaf Example01</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+
+<body>
+
+<header class="header-cadastro-usuario">
+    <h1 class="titulo-cadastro-usuario">Cadastro de Usuário</h1>
+</header>
+
+<section>
+
+    <div class=".div-botao-topo">
+    <button class=".botao-topo" type="submit">Retornar</button>
+    </div>
+    <br>
+
+    <form th:action="@{/save}" th:object="${user}" method="post" onsubmit="return validatePassword()">
+        <div class=".form-group">
+        <label for="name">Nome:</label>
+        <input class=".name-input" type="text" id="name" th:field="*{name}" required>
+        </div>
+        <br>
+
+        <div class=".form-group">
+        <label for="password">Senha:</label>
+        <input type="password" id="password" th:field="*{password}" required>
+        </div>
+        <br>
+
+        <div class=".form-group">
+        <label for="confirmPassword">Confirmar Senha:</label>
+        <input type="password" id="confirmPassword" required>
+        </div>
+        <br>
+
+        <button th:class="botao-form" type="submit">Cadastrar</button>
+    </form>
+
+    <script>
+        function validatePassword() {
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let errorMessage = document.getElementById("errorMessage");
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "As senhas não coincidem!";
+                return false;
+            }
+
+            errorMessage.textContent = "";
+            return true;
+        }
+    </script>
+
+    <p th:if="${message}" th:text="${message}" style="color: green; text-align: center; font-size: 18px;"></p>
+    <p id="errorMessage" style="color: red; text-align: center; font-size: 18px;"></p>
+
+</section>
+</body>
+
+</html>
