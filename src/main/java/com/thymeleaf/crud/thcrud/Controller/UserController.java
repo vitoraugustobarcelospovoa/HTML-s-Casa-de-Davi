@@ -2,6 +2,7 @@ package com.thymeleaf.crud.thcrud.Controller;
 
 import com.thymeleaf.crud.thcrud.Model.UserModel;
 import com.thymeleaf.crud.thcrud.Repository.UserRepository;
+import com.thymeleaf.crud.thcrud.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,41 +14,45 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    //import org.springframework.ui.Model;
-    @GetMapping(value = "/register")
-    public String getPage(Model model){
-        model.addAttribute("user", new UserModel());
-        return "index";
-    }
+  @Autowired
+  private UserService userService; // Usando o serviço de criptografia da senha
 
-    @GetMapping(value = "/users")
-    public List<UserModel> getUsers() {
-        return userRepository.findAll();
-    }
+  @GetMapping(value = "/register")
+  public String getPage(Model model){
+    model.addAttribute("user", new UserModel());
+    return "index";  // Página de registro
+  }
 
-    @PostMapping(value = "/save")
-    public String saveUser(@ModelAttribute UserModel userModel, RedirectAttributes redirectAttributes) {
-        userRepository.save(userModel);
-        redirectAttributes.addFlashAttribute("message", "Usuário cadastrado com sucesso!");
-        return "redirect:/register";
-    }
+  @GetMapping(value = "/users")
+  public List<UserModel> getUsers() {
+    return userRepository.findAll();
+  }
 
-    @PutMapping(value = "/update/{id}")
-    public String UpdateUser(@PathVariable long id, @RequestBody UserModel userModel){
-        UserModel updateUser = userRepository.findById(id).get();
-        updateUser.setName(userModel.getName());
-        updateUser.setPassword(userModel.getPassword());
-        userRepository.save(updateUser);
-        return "Updated...";
-    }
+  @PostMapping(value = "/save")
+  public String saveUser(@ModelAttribute UserModel userModel, RedirectAttributes redirectAttributes) {
+    // Criptografando a senha antes de salvar
+    userModel.setPassword(userService.encryptPassword(userModel.getPassword()));
+    userRepository.save(userModel);
+    redirectAttributes.addFlashAttribute("message", "Usuário cadastrado com sucesso!");
+    return "redirect:/register";
+  }
 
-    @DeleteMapping(value = "/delete/{id}")
-    public String DeleteUser(@PathVariable long id){
-        UserModel deleteUser = userRepository.findById(id).get();
-        userRepository.delete(deleteUser);
-        return "Deleted user with id: "+id;
-    }
+  @PutMapping(value = "/update/{id}")
+  public String updateUser(@PathVariable long id, @RequestBody UserModel userModel){
+    UserModel updateUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    updateUser.setName(userModel.getName());
+    updateUser.setPassword(userModel.getPassword()); // Certifique-se de que a senha seja criptografada
+    userRepository.save(updateUser);
+    return "Updated...";
+  }
+
+  @DeleteMapping(value = "/delete/{id}")
+  public String deleteUser(@PathVariable long id){
+    UserModel deleteUser = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    userRepository.delete(deleteUser);
+    return "Deleted user with id: "+id;
+  }
 }
