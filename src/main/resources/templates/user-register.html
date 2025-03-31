@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Thymeleaf Example01</title>
-    <link rel="stylesheet" th:href="@{/styles.css}">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
 <body>
@@ -14,34 +14,34 @@
 </header>
 
 <section>
-
-    <div class=".div-botao-topo">
-    <button class=".botao-topo" type="submit">Retornar</button>
+    <div class="div-botao-topo">
+        <button class="botao-topo" type="submit">Retornar</button>
     </div>
     <br>
 
     <form th:action="@{/save}" th:object="${user}" method="post" onsubmit="return validatePassword()">
-        <div class=".form-group">
-        <label for="name">Nome:</label>
-        <input class=".name-input" type="text" id="name" th:field="*{name}" required>
+        <div class="form-group">
+            <label for="username">Nome de Usuário:</label>
+            <input class="name-input" type="text" id="username" th:field="*{username}" required>
         </div>
         <br>
 
-        <div class=".form-group">
-        <label for="password">Senha:</label>
-        <input type="password" id="password" th:field="*{password}" required>
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" th:field="*{password}" required>
         </div>
         <br>
 
-        <div class=".form-group">
-        <label for="confirmPassword">Confirmar Senha:</label>
-        <input type="password" id="confirmPassword" required>
+        <div class="form-group">
+            <label for="confirmPassword">Confirmar Senha:</label>
+            <input type="password" id="confirmPassword" required>
         </div>
         <br>
 
         <button th:class="botao-form" type="submit">Cadastrar</button>
     </form>
 
+    <!-- Validação de Senha -->
     <script>
         function validatePassword() {
             let password = document.getElementById("password").value;
