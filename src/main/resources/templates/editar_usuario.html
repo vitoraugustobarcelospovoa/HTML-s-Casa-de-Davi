@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário</title>
+
+</head>
+<body>
+
+<section>
+    <div>
+        <button type="button" onclick="window.history.back()">Retornar</button>
+    </div>
+    <br>
+
+    <form th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" id="id" th:field="*{id}">
+        
+        <div>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" th:field="*{name}" disabled required>
+        </div>
+        <br>
+
+        <div>
+            <label for="password">Senha:</label>
+            <input type="text" id="password" th:field="*{password}" disabled required>
+        </div>
+        <br>
+
+        <button type="button" id="editButton" onclick="enableEditing()">Editar</button>
+        <button type="submit" id="saveButton" disabled>Salvar</button>
+        <button type="button" onclick="deleteUser()">Deletar</button>
+    </form>
+
+    <script>
+        function enableEditing() {
+            document.getElementById("name").disabled = false;
+            document.getElementById("password").disabled = false;
+            document.getElementById("saveButton").disabled = false;
+        }
+
+        function deleteUser() {
+            let userId = document.getElementById("id").value;
+            if (confirm("Tem certeza que deseja excluir este usuário?")) {
+                fetch(`/delete/${userId}`, { method: 'DELETE' })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data);
+                        window.location.href = "/register";
+                    })
+                    .catch(error => console.error('Erro ao deletar:', error));
+            }
+        }
+    </script>
+
+    <p th:if="${message}" th:text="${message}" style="color: green; text-align: center; font-size: 18px;"></p>
+
+</section>
+
+</body>
+</html>
