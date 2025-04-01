@@ -23,6 +23,14 @@ public class DataInitializer implements CommandLineRunner {
             UserModel user = new UserModel();
             user.setUsername("admin");
             user.setPassword(passwordEncoder.encode("123456"));
+            user.setCPF("000.000.000-00");
+            user.setTelefone("(00)99999-9999");
+            user.setCep("00000-000");
+            user.setEndereco("Rua Exemplo");
+            user.setBairro("Centro");
+            user.setCidade("Cidade Exemplo");
+            user.setUf("EX");
+
             userRepository.save(user);
         }
     }

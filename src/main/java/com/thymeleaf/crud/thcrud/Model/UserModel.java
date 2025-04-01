@@ -18,4 +18,25 @@ public class UserModel {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false, unique = true)
+    private String CPF;
+
+    @Column(nullable = false)
+    private String cep;
+
+    @Column(nullable = false)
+    private String endereco;
+
+    @Column(nullable = false)
+    private String bairro;
+
+    @Column(nullable = false)
+    private String cidade;
+
+    @Column(nullable = false)
+    private String uf;
+
+    @Column(nullable = false)
+    private String telefone;
 }

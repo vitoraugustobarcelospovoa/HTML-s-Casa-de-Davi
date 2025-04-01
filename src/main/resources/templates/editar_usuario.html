@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuário</title>
-
 </head>
 <body>
 
@@ -17,7 +16,7 @@
     <form th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" id="id" th:field="*{id}">
-        
+
         <div>
             <label for="name">Nome:</label>
             <input type="text" id="name" th:field="*{username}" disabled required>
@@ -25,8 +24,44 @@
         <br>
 
         <div>
-            <label for="password">Senha:</label>
-            <input type="text" id="password" th:field="*{password}" disabled required>
+            <label for="CPF">CPF:</label>
+            <input type="text" id="CPF" th:field="*{CPF}" disabled required placeholder="000.000.000-00" onkeyup="formatarCPF(this)">
+        </div>
+        <br>
+
+        <div>
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" th:field="*{telefone}" disabled required placeholder="(00)00000-0000" onkeyup="formatarTelefone(this)" maxlength="15">
+        </div>
+        <br>
+
+        <div>
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" th:field="*{cep}" required placeholder="00000-000" maxlength="9" onkeyup="formatarCEP(this)" disabled>
+            <button type="button" onclick="buscarCEP()">Buscar CEP</button>
+        </div>
+
+        <div>
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" th:field="*{endereco}" disabled required>
+        </div>
+        <br>
+
+        <div>
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" th:field="*{bairro}" disabled required>
+        </div>
+        <br>
+
+        <div>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" th:field="*{cidade}" disabled required>
+        </div>
+        <br>
+
+        <div>
+            <label for="uf">UF:</label>
+            <input type="text" id="uf" th:field="*{uf}" disabled required>
         </div>
         <br>
 
@@ -36,9 +71,59 @@
     </form>
 
     <script>
+   function buscarCEP() {
+    let cep = document.getElementById("cep").value.replace(/\D/g, '');
+
+    if (cep.length !== 8) {
+        alert("Digite um CEP válido no formato 00000-000!");
+        return;
+    }
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.erro) {
+                document.getElementById("endereco").value = data.logradouro;
+                document.getElementById("bairro").value = data.bairro;
+                document.getElementById("cidade").value = data.localidade;
+                document.getElementById("uf").value = data.uf;
+            } else {
+                alert("CEP não encontrado!");
+            }
+        })
+        .catch(error => console.error("Erro ao buscar CEP:", error));
+}
+        function formatarCPF(campo) {
+            let cpf = campo.value.replace(/\D/g, '');
+            if (cpf.length > 11) cpf = cpf.slice(0, 11);
+            let cpfFormatado = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            campo.value = cpfFormatado;
+        }
+        function formatarCEP(campo) {
+            let cep = campo.value.replace(/\D/g, ''); 
+            if (cep.length > 8) cep = cep.slice(0, 8);
+            let cepFormatado = cep.replace(/^(\d{5})(\d{3})/, "$1-$2"); 
+            campo.value = cepFormatado;
+}
+
+        function formatarTelefone(campo) {
+            let telefone = campo.value.replace(/\D/g, '');
+            if (telefone.length > 11) telefone = telefone.slice(0, 11);
+            let telefoneFormatado = telefone.length > 10
+                ? `(${telefone.slice(0, 2)}) ${telefone.slice(2, 7)}-${telefone.slice(7)}`
+                : `(${telefone.slice(0, 2)}) ${telefone.slice(2, 6)}-${telefone.slice(6)}`;
+            campo.value = telefoneFormatado;
+        }
+
         function enableEditing() {
             document.getElementById("name").disabled = false;
-            document.getElementById("password").disabled = false;
+            document.getElementById("CPF").disabled = false;
+            document.getElementById("telefone").disabled = false;
+            document.getElementById("cep").disabled = false;
+            document.getElementById("endereco").disabled = false;
+            document.getElementById("bairro").disabled = false;
+            document.getElementById("cidade").disabled = false;
+            document.getElementById("uf").disabled = false;
             document.getElementById("saveButton").disabled = false;
         }
 
@@ -55,8 +140,6 @@
             }
         }
     </script>
-
-    <p th:if="${message}" th:text="${message}" style="color: green; text-align: center; font-size: 18px;"></p>
 
 </section>
 

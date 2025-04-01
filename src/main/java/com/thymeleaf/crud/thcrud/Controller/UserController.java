@@ -57,11 +57,22 @@ public class UserController {
         if (existingUser.isPresent()) {
             UserModel updateUser = existingUser.get();
             updateUser.setUsername(userModel.getUsername());
+            updateUser.setCPF(userModel.getCPF());
+            updateUser.setTelefone(userModel.getTelefone());
+            updateUser.setCep(userModel.getCep());
+            updateUser.setEndereco(userModel.getEndereco());
+            updateUser.setBairro(userModel.getBairro());
+            updateUser.setCidade(userModel.getCidade());
+            updateUser.setUf(userModel.getUf());
+
+            userRepository.save(updateUser);
             
             if (userModel.getPassword() != null && !userModel.getPassword().isEmpty()) {
                 String encodedPassword = passwordEncoder.encode(userModel.getPassword());
                 updateUser.setPassword(encodedPassword);
             }
+
+
 
             userRepository.save(updateUser);
             redirectAttributes.addFlashAttribute("message", "Usuário atualizado com sucesso!");
