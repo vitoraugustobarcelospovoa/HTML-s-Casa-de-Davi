@@ -127,18 +127,19 @@
             document.getElementById("saveButton").disabled = false;
         }
 
-        function deleteUser() {
-            let userId = document.getElementById("id").value;
-            if (confirm("Tem certeza que deseja excluir este usuário?")) {
-                fetch(`/delete/${userId}`, { method: 'DELETE' })
-                    .then(response => response.text())
-                    .then(data => {
-                        alert(data);
-                        window.location.href = "/register";
-                    })
-                    .catch(error => console.error('Erro ao deletar:', error));
-            }
-        }
+       function deleteUser() {
+    let userId = document.getElementById("id").value;
+    if (confirm("Tem certeza que deseja excluir este usuário?")) {
+        fetch(`/delete/${userId}`, { method: 'DELETE' }) // <-- Corrigido aqui
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                window.location.href = "/register";
+            })
+            .catch(error => console.error('Erro ao deletar:', error));
+    }
+}
+
     </script>
 
 </section>
