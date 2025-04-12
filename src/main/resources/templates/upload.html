@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Upload PDF</title>
+</head>
+<body>
+
+<h2>Registrar PDF</h2>
+
+<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+    <label>Title:</label>
+    <input type="text" name="title" required><br><br>
+
+    <label>Escolha PDF:</label>
+    <input type="file" name="file" accept="application/pdf" required><br><br>
+
+    <button type="submit">Registrar</button>
+</form>
+
+<div th:if="${param.success}">
+    <p style="color: green;">Arquivo registrado!</p>
+</div>
+
+<hr>
+
+<h3>PDFs Salvos</h3>
+
+<table border="1">
+    <tr>
+        <th>Título</th>
+        <th>Ação</th>
+    </tr>
+    <tr th:each="document : ${documents}">
+        <td th:text="${document.title}"></td>
+        <td>
+            <a th:href="@{/download/{id}(id=${document.id})}">Baixar</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
