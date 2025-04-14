@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!--<link rel="stylesheet" href="CSS/Home-original.css">-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabernáculo da Fé Araguari</title>
+    <link rel="icon" href="CSS/Imagens/Pomba.png" type="image/png">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <script src="JS/bootstrap.min.js"></script>
+</head>
+<style>
+    :root {
+    --primary-color: #034779;
+    --secondary-color: rgb(67, 132, 193);
+    --background-color: #f4f4f9;
+    --footer-color: #272c51;
+    --highlight-color: rgb(29, 96, 158);
+    --text-color: #333;
+    --white: #ffffff;
+    --grey: #aeaeae;
+    --shadow-color: rgba(0, 0, 0, 0.33);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.background-section1 {
+    padding: 2px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-image: url('Imagens/Background.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 10%;
+    justify-content: left;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 375px) {
+    .background-section1 {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+    }
+}
+
+header {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px;
+    text-align: left;
+}
+
+.videos {
+    display: grid;
+    justify-content: flex-start;
+}
+
+header nav ul {
+    padding-left: 100px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 30px;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    color: var(--white);
+}
+
+video,
+iframe {
+    display: block;
+    margin: 20px 0;
+    max-width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.formaovivo h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formaovivo {
+    display: flex;
+    flex-direction: column;
+    width: 640px;
+    height: 360px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border: solid var(--white);
+    border-radius: 5px;
+    align-items: center;
+}
+
+.formaovivo input,
+.formaovivo select {
+    margin: 13px;
+    width: 90%;
+    border-radius: 5px;
+    border: solid 2px var(--grey);
+}
+
+.formaovivo button {
+    margin: 5px;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--white);
+    margin-top: 10px;
+    width: 30%;
+}
+
+.formaovivo button:hover {
+    background-color: rgb(48, 92, 133);
+    cursor: pointer;
+}
+
+.container1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    max-width: 100%;
+    box-shadow: 12px 4px 12px 0px var(--shadow-color);
+}
+
+.container1 img {
+    margin-right: 10px;
+    padding-left: 10px;
+}
+
+.container-fluid {
+    width: 50%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-header {
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+dl {
+    font-family: sans-serif;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.list-group-item {
+    padding: 10px;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    cursor: default;
+}
+
+.list-group-item i {
+    margin-right: 20px;
+}
+
+.final {
+    background-color: var(--highlight-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    background-color: var(--footer-color);
+    color: var(--white);
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+.relevante {
+    box-shadow: inset 0px 7px 9px var(--shadow-color);
+    background-color: var(--highlight-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.Dizimo,
+.horariocultos,
+.uberlandia,
+.participacao,
+.participacaoouuber {
+    flex: 1;
+    margin: 0 10px;
+    background-color: #ffffff;
+    border: solid rgb(185, 185, 185) 1px;
+    box-shadow: 6px 8px 4px var(--shadow-color);
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.Dizimo h4,
+.horariocultos h4,
+.uberlandia h4,
+.participacao h4,
+.participacaoouuber h4 {
+    text-align: center;
+    background-color: #303c93;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: bolder;
+    margin-top: 8px;
+}
+
+.Dizimo table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+.Dizimo table td {
+    border-radius: 5px;
+    padding: 6px;
+    border: 1px solid #848484;
+    font-size: 16px;
+}
+
+.Dizimo b,
+.horariocultos b,
+.uberlandia b {
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+    margin: 0;
+}
+
+.horariocultos p {
+    border: solid 1px #848484;
+    padding: 11px;
+    font-size: 17px;
+    margin: 0;
+}
+
+.uberlandia img {
+    width: 400px;
+}
+
+.horariocultos,
+.Dizimo {
+    text-align: center;
+}
+
+.uberlandia audio {
+    margin-left: 12%;
+}
+
+.formpart {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.formpart p {
+    margin: 5%;
+    margin-left: 2.5%;
+}
+
+.formpart input {
+    width: 75%;
+    border-radius: 5px;
+    border: solid 2px var(--grey);
+}
+
+.partci textarea {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: solid 2px var(--grey);
+    resize: vertical;
+}
+
+.partci p {
+    margin-bottom: 2px;
+}
+
+.participacao button {
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.participacao button:hover {
+    background-color: rgb(48, 92, 133);
+    cursor: pointer;
+    border-radius: 5px;
+}
+</style>
+
+<body>
+<div id="content"></div>
+<section class="relevante">
+    <div class="horariocultos">
+        <h4>Horário dos Cultos</h4>
+        <p>Segunda-Feira: 18:30h</p>
+        <p>Quarta-Feira: 18:30</p>
+        <p>Sábado 17:30</p>
+        <h4>Domingo: </h4>
+        <p>Escola das Crianças: 08:00h</p>
+        <p>Escola Dominical: 09:00h</p>
+        <p>Culto dos Jovens: 16:40h</p>
+    </div>
+    <div id="participacaoouuber"></div>
+    </div>
+    <div class="Dizimo" style="margin-bottom: 0;">
+        <h4>Conta para Dízimos e Ofertas</h4>
+        <table>
+            <tr>
+                <td><b>Banco:</b> BANCO DO BRASIL</td>
+            </tr>
+            <tr>
+                <td><b>Agência:</b></td> <!-- Insira o número da agência aqui -->
+            </tr>
+            <tr>
+                <td><b>Conta Corrente:</b></td> <!-- Insira o número da conta corrente aqui -->
+            </tr>
+            <tr>
+                <td><b>Titular:</b> Igreja Evangélica Tabernáculo Cristão</td>
+            </tr>
+            <tr>
+                <td><b>CNPJ:</b></td> <!-- Insira o CNPJ aqui -->
+            </tr>
+            <tr>
+                <td><b>PIX:</b></td> <!-- Insira a chave PIX aqui -->
+            </tr>
+        </table>
+        <h4>Contato</h4>
+        <table>
+            <tr>
+                <td><b>Telefone:</b> <a href="tel:(34)9999-9999">(34)9999-9999</a></td>
+            </tr>
+            <tr>
+                <td><b>E-mail:</b> <a href="mailto:araguari@somentecrer.org.br">mmmmm@gmail.com</a></td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section class="final" >
+    <div class="uberlandia">
+        <h4>Goiânia</h4>
+        <img src="Imagens/goiania.jpg" alt="Uber">
+    </div>
+    <div class="uberlandia">
+        <h4>Goiânia</h4>
+        <img src="Imagens/goiania.jpg" alt="Uber">
+    </div>
+    <div class="uberlandia">
+        <h4>Goiânia</h4>
+        <img src="Imagens/goiania.jpg" alt="Uber">
+    </div>
+</section>
+<footer>
+    <p>@Origem</p>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script >
+    function updateContent() {
+      const contentDiv = document.getElementById('content');
+      const participa = document.getElementById('participacaoouuber');
+
+      // Função para buscar o estado da checkbox do servidor
+      function fetchCheckboxStatus() {
+          fetch('http://localhost:8080/api/checkbox')
+              .then(response => response.json())
+              .then(status => {
+                  // Atualiza o localStorage com o estado da checkbox
+                  localStorage.setItem('checkboxStatus', status.checked);
+                  renderContent(status.checked); // Renderiza o conteúdo baseado no estado da checkbox
+
+                  // Troca as classes 'uberlandia' e 'participacao' conforme o estado da checkbox
+                  toggleClasses(status.checked);
+              })
+              .catch(error => console.error('Erro ao buscar estado da checkbox:', error));
+      }
+
+     function toggleClasses(isChecked){
+      if(isChecked){
+          participa.innerHTML = `<div class="participacao">
+              <form action="" method="post" class="formpai" id="participacao">
+                  <h4>Enviar Participação | Pedido de Oração:</h4>
+                  <div class="formpart">
+                  <p>Nome:</p>
+                  <input type="text" id="nome1" placeholder="Insira seu nome: " required>
+                  </div>
+                  <div class="formpart">
+                  <p>Cidade:</p>
+                  <input type="text" id="cidade1" placeholder="Insira sua Cidade: " required>
+                  </div>
+                  <div class="formpart">
+                  <p>E-mail:</p>
+                  <input type="text" id="email" placeholder="Insira seu E-mail: " required>
+                  </div>
+                  <p>Participação:</p>
+                  <div class="formpart partci">
+                  <textarea type="text" id="participacaoTexto" placeholder="Participação: " required></textarea>
+                  </div>
+                  <button type="submit">Enviar</button>
+              </form>`;
+
+              document.getElementById('participacao').addEventListener('submit', function (event) {
+                  event.preventDefault();
+
+                  const Nome = document.getElementById('nome1').value;
+                  const city = document.getElementById('cidade1').value;
+                  const email = document.getElementById('email').value;
+                  const participation = document.getElementById('participacaoTexto').value;
+
+                  fetch('http://localhost:8080/participacoes', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ nome: Nome, cidade: city, email: email, participacao_text: participation })
+                  })
+                  .then(response => {
+                      if (!response.ok) {
+                          throw new Error('Erro ao enviar dados para o servidor');
+                      }
+                      return response.json();
+                  })
+                  .then(data => {
+                      alert('Participação enviada com sucesso!');
+                  })
+                  .catch(error => {
+                      console.error('Erro:', error);
+                      alert('Ocorreu um erro ao enviar a sua participação. Tente novamente mais tarde.');
+                  });
+              });
+      }else{
+         participa.innerHTML = `<div class="uberlandia">
+              <h4>Web Rádio</h4>
+
+              <audio controls="" src="https://servidor18.brlogic.com:7436/live?type=.m3u"></audio>
+
+              <h4>Goiânia</h4>
+              <img src="Imagens/goiania.jpg" alt="Uber">
+          </div>`
+      }
+     }
+
+      // Função para renderizar o conteúdo baseado no estado da checkbox
+      function renderContent(isChecked) {
+          if (isChecked) {
+              contentDiv.innerHTML = `
+                  <section class="background-section1">
+                      <div class="container1">
+                          <img src="CSS/Imagens/Pomba.png" width="35px" height="35px" alt="Logo" style="height: 40px;width: 49px;"/>
+                          <h4>Tabernáculo da Fé Araguari-MG</h4>
+                      </div>
+                      <div class="videos">
+                          <h1 style="margin-top: 20px">Ao Vivo</h1>
+                          <div id="liveContent" style="display: none;">
+                              <iframe id="videoFrame" width="640" height="360" title="YouTube video player" frameborder="0"
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                          </div>
+                          <div id="formContainer" class="formaovivo">
+                              <h2>Por favor, insira seus dados para acessar o ao vivo:</h2>
+                              <form id="accessForm">
+                                  <input type="text" id="nome" placeholder="Seu nome" required />
+                                  <input type="text" id="cidade" placeholder="Sua cidade" required />
+                                  <select id="Estado" required>
+                                      <option value="">Selecione seu estado</option>
+                                      <option value="MG">Minas Gerais</option>
+                                      <option value="AC">Acre</option>
+                                      <option value="AL">Alagoas</option>
+                                      <option value="AP">Amapá</option>
+                                      <option value="AM">Amazonas</option>
+                                      <option value="BA">Bahia</option>
+                                      <option value="CE">Ceará</option>
+                                      <option value="ES">Espírito Santo</option>
+                                      <option value="GO">Goiás</option>
+                                      <option value="MA">Maranhão</option>
+                                      <option value="MT">Mato Grosso</option>
+                                      <option value="MS">Mato Grosso do Sul</option>
+                                      <option value="PA">Pará</option>
+                                      <option value="PB">Paraíba</option>
+                                      <option value="PR">Paraná</option>
+                                      <option value="PE">Pernambuco</option>
+                                      <option value="PI">Piauí</option>
+                                      <option value="RJ">Rio de Janeiro</option>
+                                      <option value="RN">Rio Grande do Norte</option>
+                                      <option value="RS">Rio Grande do Sul</option>
+                                      <option value="RO">Rondônia</option>
+                                      <option value="RR">Roraima</option>
+                                      <option value="SC">Santa Catarina</option>
+                                      <option value="SP">São Paulo</option>
+                                      <option value="SE">Sergipe</option>
+                                      <option value="TO">Tocantins</option>
+                                      <option value="DF">Distrito Federal</option>
+                                  </select>
+                                  <button type="submit">Acessar Ao Vivo</button>
+                              </form>
+                          </div>
+                      </div>
+                  </section>
+              `;
+
+              document.getElementById('accessForm').addEventListener('submit', function (event) {
+                  event.preventDefault();
+                  const name = document.getElementById('nome').value;
+                  const city = document.getElementById('cidade').value;
+                  const state = document.getElementById('Estado').value;
+
+                  fetch('http://localhost:8080/conexoes', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ nome: name, cidade: city, estado: state })
+                  })
+                  .then(response => {
+                      if (!response.ok) {
+                          throw new Error('Erro ao enviar dados para o servidor');
+                      }
+                      return response.json();
+                  })
+                  .then(() => {
+                      document.getElementById('formContainer').style.display = 'none';
+                      document.getElementById('liveContent').style.display = 'block';
+                      return fetch('http://localhost:8080/link/1');
+                  })
+                  .then(response => {
+                      if (!response.ok) {
+                          throw new Error('Network response was not ok');
+                      }
+                      return response.json();
+                  })
+                  .then(data => {
+                      const iframe = document.getElementById('videoFrame');
+                      iframe.src = "https://www.youtube.com/embed/" + data.link;
+                  })
+                  .catch(error => {
+                      console.error('Houve um problema com a operação fetch:', error);
+                  });
+              });
+          } else {
+              contentDiv.innerHTML = `
+                  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators"></ol>
+                      <div class="carousel-inner">
+                          <div class="carousel-item active">
+                              <img src="Imagens/carrossel 1.jpg" class="is-desktop d-block w-100" alt="...">
+                          </div>
+                      </div>
+                  </div>
+              `;
+          }
+      }
+
+      // Verifica o estado da checkbox no servidor
+      fetchCheckboxStatus();
+  }
+
+  // Executa a função de atualização quando a página carrega
+  updateContent();
+
+  // Atualiza o conteúdo quando houver mudanças no localStorage
+  window.addEventListener('storage', updateContent);
+
+
+</script>
+
+</html>

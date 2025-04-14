@@ -1,18 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Cadastrar Beneficiário</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <style>
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+    <script th:src="@{/JS/buscas-formatacoes.js}"></script>
+   
 </head>
 <body>
-<header class="header-cadastro-usuario">
-    <h1 class="titulo-cadastro-usuario">Edição de Usuário</h1>
-</header>
-<section>
-    <div>
-        <button type="button" onclick="window.history.back()">Retornar</button>
-    </div>
-    <br>
+<h1>Cadastrar Beneficiário</h1>
 
+<form method="post" th:action="@{/beneficiario/salvar}" th:object="${beneficiario}">
+
+    <label>
+        <input type="checkbox" id="pessoa_juridica" th:field="*{PF_PJ}" onclick="alternarTipoPessoa()" />
+        Pessoa Jurídica (PJ)?
+    </label>
+
+    <label id="label_cnpj">CNPJ:</label>
+    <input type="text" id="cnpj" th:field="*{cnpj_cpf}" placeholder="Digite o CNPJ ou CPF" />
+    <button type="button" onclick="buscarCnpjCpf()">Buscar</button>
+
+    <label>Nome/Razão Social:
+        <input type="text" id="nome" th:field="*{nome_Razão_Social}" />
+    </label>
+
+    <label>CEP:
+        <input type="text" id="cep" th:field="*{cep}" required placeholder="00000-000" maxlength="9" onkeyup="formatarCEP(this)" >
+        <button type="button" onclick="buscarCEP()">Buscar CEP</button>
+    </label>
+
+    <label>Endereço:
+        <input type="text" id="endereco" th:field="*{endereco}" />
+    </label>
+
+    <label>Número:
+        <input type="text" id="numero_end" th:field="*{numero_end}" />
+    </label>
+
+    <label>Bairro:
+        <input type="text" id="bairro" th:field="*{bairro}" />
+    </label>
+
+    <label>Cidade:
+        <input type="text" id="cidade" th:field="*{cidade}" />
+    </label>
+
+    <label>UF:
+        <input type="text" id="uf" th:field="*{uf}" />
+    </label>
+
+    <label>Telefone:
+        <input type="text" id="telefone" th:field="*{telefone}" />
+    </label>
+
+    <label>Email:
+        <input type="text" id="email" th:field="*{email}" />
+    </label>
+
+    <label>Observações:
+        <textarea th:field="*{observações}"></textarea>
+    </label>
+
+    <br>
+    <button type="submit">Salvar</button>
+</form>
 </body>
 </html>

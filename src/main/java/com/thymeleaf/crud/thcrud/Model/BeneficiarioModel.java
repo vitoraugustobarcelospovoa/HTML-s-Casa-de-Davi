@@ -24,7 +24,7 @@ public class BeneficiarioModel {
 
     private String endereco;
 
-    private long numero_end;
+    private String numero_end;
 
     private String bairro;
 
