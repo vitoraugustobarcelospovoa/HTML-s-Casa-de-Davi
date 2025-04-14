@@ -24,4 +24,6 @@ public class BeneficiarioController {
         beneficiarioRepository.save(beneficiario);
         return "redirect:/beneficiario/novo";
     }
+
+
 }

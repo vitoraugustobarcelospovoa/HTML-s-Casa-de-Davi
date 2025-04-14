@@ -14,7 +14,7 @@ public class BeneficiarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_beneficiario;
 
-    private String nome_Razão_Social;
+    private String nomeRazaoSocial;
 
     private String cnpj_cpf;
 

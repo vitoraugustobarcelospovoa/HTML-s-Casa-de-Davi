@@ -113,3 +113,46 @@ function alternarTipoPessoa() {
 }
 
 window.onload = alternarTipoPessoa;
+
+//buscar beneficiário
+
+function abrirSelecaoBeneficiario() {
+  document.getElementById("overlay").style.display = "block";
+  filtrarBeneficiarios(); // Buscar todos inicialmente
+}
+
+function fecharOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+function filtrarBeneficiarios() {
+  const cpfCnpj = document.getElementById("filtroCpfCnpj").value;
+  const nome = document.getElementById("filtroNome").value;
+
+  fetch(`/api/beneficiarios?cpfCnpj=${cpfCnpj}&nome=${nome}`)
+    .then(res => res.json())
+    .then(data => {
+      const corpo = document.getElementById("corpoTabela");
+      corpo.innerHTML = "";
+
+      data.forEach(benef => {
+        const linha = document.createElement("tr");
+
+        linha.innerHTML = `
+          <td>${benef.id_beneficiario}</td>
+          <td>${benef.nomeRazaoSocial}</td>
+          <td>${benef.cnpj_cpf}</td>
+          <td><button type="button" onclick="selecionarBeneficiario(${benef.id_beneficiario}, '${benef.nomeRazaoSocial}')">Selecionar</button></td>  <!-- Alterado para id_beneficiario e nomeRazaoSocial -->
+        `;
+
+        corpo.appendChild(linha);
+      });
+    });
+}
+
+function selecionarBeneficiario(id, nome) {
+  document.getElementById("idBeneficiario").value = id;
+  document.getElementById("nomeBeneficiario").value = nome;
+  fecharOverlay();
+}
+
