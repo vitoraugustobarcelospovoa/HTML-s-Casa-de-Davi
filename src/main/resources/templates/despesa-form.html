@@ -78,19 +78,22 @@
   <input type="text" id="filtroNome" oninput="filtrarBeneficiarios()">
 
   <br><br>
-  <table border="1" width="100%" id="tabelaBeneficiarios">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome/Razão Social</th>
-      <th>CNPJ/CPF</th>
-      <th>Ação</th>
-    </tr>
-    </thead>
-    <tbody id="corpoTabela">
-    </tbody>
-  </table>
+  <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc;">
+    <table border="1" width="100%" id="tabelaBeneficiarios">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome/Razão Social</th>
+        <th>CNPJ/CPF</th>
+        <th>Ação</th>
+      </tr>
+      </thead>
+      <tbody id="corpoTabela">
+      </tbody>
+    </table>
+  </div>
 </div>
+
 <script th:src="@{/JS/buscas-formatacoes.js}"></script>
 
 </body>
