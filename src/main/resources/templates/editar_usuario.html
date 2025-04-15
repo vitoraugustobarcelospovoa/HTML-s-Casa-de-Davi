@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="formularios.css">
     <title>Editar Usuário</title>
 </head>
 <body>
@@ -13,9 +14,9 @@
 </header>
 
 
-<section>
+<section class="container">
 
-    <div>
+    <div class="div-botao-topo">
         <button type="button" onclick="window.history.back()">Retornar</button>
     </div>
     <br>
@@ -23,29 +24,29 @@
     <form th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" id="id" th:field="*{id}">
-
-        <div>
+        <div class="linha ">
+        <div class="inp1">
             <label for="name">Nome:</label>
-            <input type="text" id="name" th:field="*{username}" disabled required>
+            <input type="text" id="name" th:field="*{username}" disabled required class="inp3">
         </div>
-        <br>
 
-        <div>
+        <div class="inp2 distancia">
             <label for="CPF">CPF:</label>
-            <input type="text" id="CPF" th:field="*{CPF}" disabled required placeholder="000.000.000-00" onkeyup="formatarCPF(this)">
+            <input class="inp3" type="text" id="CPF" th:field="*{CPF}" disabled required placeholder="000.000.000-00" onkeyup="formatarCPF(this)">
         </div>
         <br>
-
+        </div>
+        <div class="linha "> 
+        <div class="btninterno">
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" th:field="*{cep}" required placeholder="00000-000" maxlength="9" onkeyup="formatarCEP(this)" disabled>
+            <button type="button" onclick="buscarCEP()">Buscar CEP</button>
+        </div>
         <div>
             <label for="telefone">Telefone:</label>
             <input type="text" id="telefone" th:field="*{telefone}" disabled required placeholder="(00)00000-0000" onkeyup="formatarTelefone(this)" maxlength="15">
         </div>
         <br>
-
-        <div>
-            <label for="cep">CEP:</label>
-            <input type="text" id="cep" th:field="*{cep}" required placeholder="00000-000" maxlength="9" onkeyup="formatarCEP(this)" disabled>
-            <button type="button" onclick="buscarCEP()">Buscar CEP</button>
         </div>
 
         <div>
