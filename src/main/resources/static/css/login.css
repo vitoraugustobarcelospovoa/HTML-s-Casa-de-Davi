@@ -1,6 +1,7 @@
 @font-face{ 
     font-family: "Roboto";
-    src: url("FONT/Roboto/RobotoCondensed-Regular.ttf");
+    src: url('/FONT/Roboto/RobotoCondensed-Regular.ttf') format('truetype');
+
 }
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/formularios.css}">
     <link rel="stylesheet" href="formularios.css">
     <title>Editar Usuário</title>
 </head>
@@ -39,12 +39,12 @@
         <div class="linha "> 
         <div class="">
             <label for="cep">CEP:</label>
-            <input type="text" id="cep" th:field="*{cep}" required placeholder="00000-000" maxlength="9" onkeyup="formatarCEP(this)" disabled>
-            <button type="button" onclick="buscarCEP()">Buscar CEP</button>
+            <input type="text" id="cep" th:field="*{cep}" required placeholder="00000-000" maxlength="9" onkeyup="formatarCEP(this)" disabled class="inp2">
+            <button type="button" class="cep inp2" onclick="buscarCEP()">Buscar CEP</button>
         </div>
         <div class="inp2 distancia">
             <label for="telefone">Telefone:</label>
-            <input type="text" class="inp3" id="telefone" th:field="*{telefone}" disabled required placeholder="(00)00000-0000" onkeyup="formatarTelefone(this)" maxlength="15">
+            <input type="text" class="inp1" id="telefone" th:field="*{telefone}" disabled required placeholder="(00)00000-0000" onkeyup="formatarTelefone(this)" maxlength="15">
         </div>
         <br>
         </div>
@@ -56,7 +56,7 @@
         <br>
         <div class="inp2 distancia">
             <label for="numero">Número :</label>
-            <input class="inp3" type="text" id="endereco" th:field="*{}" disabled required>
+            <input class="inp3" type="text" id="endereco" disabled required>
         </div>
         <br>
         </div>
@@ -79,11 +79,12 @@
         </div>
         <br>
         </div>  
+        <div class="espaço43vh"></div>
 
-        <div class="linha"> 
-        <button type="button" id="editButton" onclick="enableEditing()">Editar</button>
-        <button type="submit" id="saveButton" disabled>Salvar</button>
-        <button type="button" onclick="deleteUser()">Deletar</button>
+        <div class="editar linha"> 
+        <button class="distancia" type="button" id="editButton" onclick="enableEditing()">Editar</button>
+        <button class="distancia" type="submit" id="saveButton" disabled>Salvar</button>
+        <button class="distancia" type="button" onclick="deleteUser()">Deletar</button>
         </div>
     </form>
 

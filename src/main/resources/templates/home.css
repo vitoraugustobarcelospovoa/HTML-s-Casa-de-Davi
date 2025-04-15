@@ -1,0 +1,283 @@
+@font-face{ 
+    font-family: "Roboto";
+    src: url("FONT/Roboto/RobotoCondensed-Regular.ttf");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header-home {
+    position: fixed;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    margin-top: -50px;
+    z-index: 1000;
+}
+
+.logo-div {
+    width: 5%;
+}
+
+.logo-header {
+    height: 100%;
+    width: 100%;
+}
+
+.espaço-header {
+    width: 75%;
+}
+
+.adm-div {
+    padding-top: 10px;
+    text-align: right;
+    width: 15%;
+}
+
+.logo-adm {
+    height: 70%;
+    width: 20%;
+}
+
+.titulo-adm {
+    width: 5%;
+}
+
+.adm {
+    font-size: 17px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+.principal {
+    display: flex;
+    height: 700px;
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 50px;
+}
+
+.principal-conteudo {
+    width: 100%;
+    height: 100%;
+}
+
+
+.menu-vertical {
+    position: fixed;
+    display: block;
+    width: 5%;
+    height: 100%;
+    background-color: #106ABC;
+    z-index: 2000;
+}
+
+.menu-vertical:active {
+    width: 10%;
+.botao-menu {
+    width: 23%;
+}
+}
+
+.botao-div-menu {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.botao-menu {
+    width: 40%;
+    height: 30%;
+    filter: invert(1) opacity(1.0);
+}
+
+.botao-menu:hover {
+    filter: invert(1) opacity(0.8);
+}
+
+.footer-home {
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    background-color: #0192E3;
+
+}
+
+@media (min-width: 1600px) {
+    .footer-home {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #0192E3;
+      z-index: 3000;
+    }
+  }
+
+.cadastro-conteudo {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 10px;
+    height: 210px;
+    width: 100%;
+}
+
+.agendamento-conteudo {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 10px;
+    height: 210px;
+    width: 100%;
+}
+
+.atendimento-conteudo {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 10px;
+    height: 210px;
+    width: 100%;
+}
+
+.cadastro-conteudo-div {
+    display: flex;
+}
+
+.convenio-img {
+    height: 110px;
+    width: 100px;
+    margin-left: 80px;
+}
+
+.img {
+    height: 110px;
+    width: 100px;
+    margin-left: 75px;
+}
+
+.cadastro-conteudo-titulo {
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 15px;
+    margin-left: 30px;
+    font-size: 32px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+.convenio {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 82px;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: bolder;
+
+}
+
+.prontuario {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 82px;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+.especialidade {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 68px;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+.medicos {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 89px;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+.usuarios {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 82px;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+.pacientes {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-left: 83px;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+.degrade-azul-branco {
+    width: 90%;
+    height: 7px;
+    background-image: linear-gradient(to right, #007bff, #ffffff);
+  }
+
+  .links {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .links:hover {
+    filter: opacity(0.7);
+  }
+  
+
+  @media (max-width: 1000px) {
+    .cadastro-conteudo, .agendamento-conteudo, .atendimento-conteudo{
+        display: flex;
+        flex-direction: column;
+    }
+    .cadastro-conteudo-div, .agendamento-conteudo-div, .agendamento-conteudo-div{
+        display: flex;
+        flex-direction: column;
+    }
+    .menu-vertical {
+        display: none;
+    }
+
+    .principal-conteudo {
+        padding-left: 0%;
+        display: block;
+    }
+
+    .adm-div {
+        padding-top: 10px;
+        text-align: right;
+        width: 60%;
+    }
+
+    .logo-div {
+        width: 30%;
+    }
+    
+    .logo-header {
+        height: 100%;
+        width: 100%;
+    }
+
+  }
