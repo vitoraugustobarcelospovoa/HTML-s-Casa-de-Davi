@@ -1,0 +1,145 @@
+header{
+    background-color: #000068;
+    color: white;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 40px;
+    height: 70px;
+    z-index: 1000;
+    padding-bottom: 5px;
+}
+body{
+    overflow-x: hidden;
+}
+
+.container{
+    margin-top: 90px;
+    width: 89%;
+    margin-left: 6%;
+}
+.linha{
+    display: flex;
+}
+.block{
+    display: block;
+}
+input{
+    
+    border-radius: 5px;
+    border:solid gray 1px;
+    height: 25px;
+}
+button{
+    border-radius: 5px;
+    border:solid gray 1px;
+    height: 29px;
+}
+select{
+    border-radius: 5px;
+    border:solid gray 1px;
+    height: 29px;
+}
+.inp1{
+    width: 66.66666666666666%;
+}
+.inp2{
+    width: 33.33333333333333%;
+}
+.inp3{
+    width: 100%;
+}
+.inp4{
+    width: 20%;
+}
+.distancia{
+    margin-left: 2%;
+}
+button{
+    width: 133px;
+    height: 37px;
+    background-color: #1a0da7;
+    color: white;
+    font-size: 20px;
+    box-shadow: black 1px 1px 5px;
+}
+button:hover{
+    box-shadow: inset black 2px 2px;
+    background-color: #0d0688;
+    cursor: pointer;
+}
+
+/* para omitir as setas dos imputs de números nos navegadores */
+input[type=number]::-webkit-inner-spin-button {
+    display: none;
+  }
+  input[type=number]::-webkit-outer-spin-button {
+    display: none;
+  }
+  
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+  label{
+    display: block;
+  }
+
+  /*colocar o botão dentro do input beneficiario*/
+  .btninterno {
+    position: relative;
+    display: inline-block;
+    width: 100%; 
+  }
+  .btninterno input{
+    width: 90%;
+  }
+  
+  .btninterno button {
+    width: 12%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border: none;
+    background-color: #1a0da7;
+    padding: 0 0%;
+    cursor: pointer;
+    border-radius: 5px;
+    border:solid gray 1px;
+    height: 29px;
+    box-shadow: none;
+    font-size: 17px;
+  }
+  .btninterno button:hover{
+    box-shadow: inset black 2px 2px;
+    background-color: #0d0688;
+    cursor: pointer;
+}
+  /*----------------------------------------------*/
+  input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .salvar{
+    margin-left: 90%;
+}
+table{
+    border: solid gray 1px;
+    margin: 0;
+    padding: 0;
+}
+th{
+    background-color: #0d0688;
+    color: white;
+    margin: 0;
+    border: solid gray 1px;
+}
+tr{
+    border: solid gray 1px;
+    margin: 0;
+}
+td{
+    border: solid gray 1px;
+    margin: 0;
+}

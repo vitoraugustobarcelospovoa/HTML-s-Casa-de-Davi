@@ -142,7 +142,7 @@ function filtrarBeneficiarios() {
           <td>${benef.id_beneficiario}</td>
           <td>${benef.nomeRazaoSocial}</td>
           <td>${benef.cnpj_cpf}</td>
-          <td><button type="button" onclick="selecionarBeneficiario(${benef.id_beneficiario}, '${benef.nomeRazaoSocial}')">Selecionar</button></td>  <!-- Alterado para id_beneficiario e nomeRazaoSocial -->
+          <td><button type="button"  onclick="selecionarBeneficiario(${benef.id_beneficiario}, '${benef.nomeRazaoSocial}')">Selecionar</button></td>
         `;
 
         corpo.appendChild(linha);
@@ -156,3 +156,28 @@ function selecionarBeneficiario(id, nome) {
   fecharOverlay();
 }
 
+function formatarMoeda(campo) {
+    let valor = campo.value.replace(/\D/g, '');
+    valor = (valor / 100).toFixed(2) + '';
+    valor = valor.replace('.', ',');
+    valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    campo.value = 'R$' + valor;
+  }
+  function formatarCpfCnpj(campo) {
+    let valor = campo.value.replace(/\D/g, '');
+  
+    if (valor.length <= 11) {
+      // Formatar como CPF: 000.000.000-00
+      valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+      valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+      valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    } else {
+      // Formatar como CNPJ: 00.000.000/0000-00
+      valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+      valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+      valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+      valor = valor.replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+    }
+  
+    campo.value = valor;
+  }
