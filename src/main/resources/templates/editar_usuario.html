@@ -37,45 +37,54 @@
         <br>
         </div>
         <div class="linha "> 
-        <div class="btninterno">
+        <div class="">
             <label for="cep">CEP:</label>
             <input type="text" id="cep" th:field="*{cep}" required placeholder="00000-000" maxlength="9" onkeyup="formatarCEP(this)" disabled>
             <button type="button" onclick="buscarCEP()">Buscar CEP</button>
         </div>
-        <div>
+        <div class="inp2 distancia">
             <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" th:field="*{telefone}" disabled required placeholder="(00)00000-0000" onkeyup="formatarTelefone(this)" maxlength="15">
+            <input type="text" class="inp3" id="telefone" th:field="*{telefone}" disabled required placeholder="(00)00000-0000" onkeyup="formatarTelefone(this)" maxlength="15">
         </div>
         <br>
         </div>
-
-        <div>
+        <div class="linha "> 
+        <div class="inp1">
             <label for="endereco">Endereço:</label>
-            <input type="text" id="endereco" th:field="*{endereco}" disabled required>
+            <input type="text" class="inp3" id="endereco" th:field="*{endereco}" disabled required>
         </div>
         <br>
-
-        <div>
+        <div class="inp2 distancia">
+            <label for="numero">Número :</label>
+            <input class="inp3" type="text" id="endereco" th:field="*{}" disabled required>
+        </div>
+        <br>
+        </div>
+        <div class="linha "> 
+        <div class="inp2">
             <label for="bairro">Bairro:</label>
-            <input type="text" id="bairro" th:field="*{bairro}" disabled required>
+            <input type="text" class="inp3" id="bairro" th:field="*{bairro}" disabled required>
         </div>
         <br>
 
-        <div>
+        <div class="inp2 distancia">
             <label for="cidade">Cidade:</label>
-            <input type="text" id="cidade" th:field="*{cidade}" disabled required>
+            <input type="text" class="inp3" id="cidade" th:field="*{cidade}" disabled required>
         </div>
         <br>
 
-        <div>
+        <div class="inp2 distancia">
             <label for="uf">UF:</label>
-            <input type="text" id="uf" th:field="*{uf}" disabled required>
+            <input type="text" class="inp3" id="uf" th:field="*{uf}" disabled required>
         </div>
         <br>
+        </div>  
 
+        <div class="linha"> 
         <button type="button" id="editButton" onclick="enableEditing()">Editar</button>
         <button type="submit" id="saveButton" disabled>Salvar</button>
         <button type="button" onclick="deleteUser()">Deletar</button>
+        </div>
     </form>
 
     <script th:src="@{/JS/buscas-formatacoes.js}"></script>
